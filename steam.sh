@@ -111,7 +111,7 @@ function install() {
 
     # INSTALL ASF
     hint "正在下载 ASF 主程序"
-    asf_uri=https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/4.1.0.3/ASF-generic.zip
+    asf_uri=https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/5.2.1.5/ASF-generic.zip
     if [[ $PROXY ]]; then
         curl -x $PROXY -L $asf_uri -o ${ASF_SAVE_PATH}ASF-generic.zip
     else
@@ -230,7 +230,7 @@ function config() {
         return 0
     fi
     echo -e "请打开 $(hint $web_uri)，\
-生成 $(hint V4.1.0.3) 版本可用配置，$notice_enabled随后 $(hint 右键) 粘贴到此处，按 $(hint 'Enter -> Ctrl + D') 保存"
+生成 $(hint V5.2.1.5) 版本可用配置，$notice_enabled随后 $(hint 右键) 粘贴到此处，按 $(hint 'Enter -> Ctrl + D') 保存"
     [[ -s $config ]] && cp $config $config.bak
     cat >$config
     hint '配置完成，3s 回到主菜单'
@@ -304,6 +304,7 @@ function menu() {
     $(hint ASF) 挂卡管理器
      V0.0.1 2019.11.16
            AUTHOR $(hint LOGI)
+           MODIFY $(hint deXaint)
 ----------------------
  0. $(hint 退出)
  1. $(hint 安装)
