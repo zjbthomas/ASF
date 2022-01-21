@@ -302,7 +302,7 @@ function menu() {
         cat <<EOF
 ----------------------
     $(hint ASF) 挂卡管理器
-     V0.0.1 2019.11.16
+     V0.0.1 2022.01.21
            AUTHOR $(hint LOGI)
            MODIFY $(hint deXaint)
 ----------------------
