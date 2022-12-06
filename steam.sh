@@ -70,7 +70,7 @@ function install() {
     install_requirements
     create_directories
 
-    # INSTALL .NET CORE SDK 6.0
+    # INSTALL .NET CORE SDK 7.0
     arch=$(uname -m)
     if [[ $arch == x86_64 ]]; then
         version=x64
@@ -82,30 +82,30 @@ function install() {
         dotnet_error "不支持的系统架构：$arch"
         return 1
     fi
-    version=dotnet-sdk-6.0.101-linux-$version
+    version=-sdk-7.0.100-linux-$version
     dotnet_uri=https://dotnet.microsoft.com/download/thank-you/$version-binaries
     dotnet_uri=$(curl -sL -m 5 $dotnet_uri | grep -oE "http.+$version.tar.gz" | head -1)
     if [[ ! $dotnet_uri ]]; then
-        dotnet_error "无法获取 .NET Core 6.0 SDK 下载地址"
+        dotnet_error "无法获取 .NET Core 7.0 SDK 下载地址"
         return 1
     fi
 
-    hint "正在下载 .NET Core 6.0 SDK"
+    hint "正在下载 .NET Core 7.0 SDK"
     curl -L $dotnet_uri -o ${DOTNET_SAVE_PATH}$version.tar.gz
     if [[ -f ${DOTNET_SAVE_PATH}$version.tar.gz ]]; then
         tar -zxf ${DOTNET_SAVE_PATH}$version.tar.gz -C $DOTNET_SAVE_PATH
     else
-        dotnet_error "无法下载 .NET Core 6.0 SDK"
+        dotnet_error "无法下载 .NET Core 7.0 SDK"
         return 1
     fi
     if [[ -f $DOTNET_SAVE_PATH/dotnet ]]; then
         ln -s $DOTNET_SAVE_PATH/dotnet /usr/local/bin/dotnet
         if [[ ! $(dotnet --info 2>/dev/null) ]]; then
-            dotnet_error ".NET Core 6.0 SDK 版本错误"
+            dotnet_error ".NET Core 7.0 SDK 版本错误"
             return 1
         fi
     else
-        dotnet_error "无法下载 .NET Core 6.0 SDK"
+        dotnet_error "无法下载 .NET Core 7.0 SDK"
         return 1
     fi
 
@@ -230,7 +230,7 @@ function config() {
         return 0
     fi
     echo -e "请打开 $(hint $web_uri)，\
-生成 $(hint V5.2.1.5) 版本可用配置，$notice_enabled随后 $(hint 右键) 粘贴到此处，按 $(hint 'Enter -> Ctrl + D') 保存"
+生成 $(hint V5.4.0.3) 版本可用配置，$notice_enabled随后 $(hint 右键) 粘贴到此处，按 $(hint 'Enter -> Ctrl + D') 保存"
     [[ -s $config ]] && cp $config $config.bak
     cat >$config
     hint '配置完成，3s 回到主菜单'
