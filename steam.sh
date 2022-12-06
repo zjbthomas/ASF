@@ -111,7 +111,7 @@ function install() {
 
     # INSTALL ASF
     hint "正在下载 ASF 主程序"
-    asf_uri=https://github.com.cnpmjs.org/JustArchiNET/ArchiSteamFarm/releases/download/5.2.1.5/ASF-generic.zip
+    asf_uri=https://github.com/JustArchiNET/ArchiSteamFarm/releases/download/5.4.0.3/ASF-generic.zip
     if [[ $PROXY ]]; then
         curl -x $PROXY -L $asf_uri -o ${ASF_SAVE_PATH}ASF-generic.zip
     else
