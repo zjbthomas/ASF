@@ -83,7 +83,7 @@ function install() {
         return 1
     fi
     version=sdk-7.0.100-linux-$version
-    dotnet_uri=https://dotnet.microsoft.com/download/thank-you/$version-binaries
+    dotnet_uri=https://dotnet.microsoft.com/download/dotnet/thank-you/$version-binaries
     dotnet_uri=$(curl -sL -m 5 $dotnet_uri | grep -oE "http.+$version.tar.gz" | head -1)
     if [[ ! $dotnet_uri ]]; then
         dotnet_error "无法获取 .NET Core 7.0 SDK 下载地址"
